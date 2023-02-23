@@ -4,7 +4,7 @@
  * Description: 一个轻量级插件，用于改善WordPress在中国大陆的使用体验。
  * Author: 耗子开发组@耗子
  * Author URI: https://hzbk.net/
- * Version: 1.0.1
+ * Version: 1.0.2
  * License: GPLv3 or later
  * Text Domain: wp-china-no
  * Domain Path: /languages
@@ -19,7 +19,7 @@ namespace HaoZiTeam\WP_CHINA_NO;
 use HaoZiTeam\WP_CHINA_NO\Inc\Plugin;
 use HaoZiTeam\Autoload;
 
-const VERSION     = '1.0.1';
+const VERSION     = '1.0.2';
 const PLUGIN_FILE = __FILE__;
 const PLUGIN_DIR  = __DIR__;
 

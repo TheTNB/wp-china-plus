@@ -1,0 +1,35 @@
+# WP-China-No
+
+一个轻量级插件，用于改善WordPress在中国大陆的使用体验。
+
+## 简介
+
+由于 LitePress 及其所属的 WP-China-Yes 项目已近乎"脑死亡"，故产生了本项目。
+
+## 功能
+
+- [✓] 优化 WordPress 相关服务在中国大陆的访问速度
+- [✓] 优化 WordPress 后台加载速度
+- [✓] 优化 Gravatar 头像加载速度
+- [✓] 优化 谷歌字体 加载速度
+- [✓] 优化 谷歌前端库 加载速度
+- [✓] 优化 CDNJS 加载速度
+
+## 安装
+
+同其他 WordPress 插件一样，从Release页面下载最新版本的插件，在后台插件管理页面上传并启用即可。
+你也可以选择将插件手动上传到`wp-content/plugins`目录下，然后在后台启用。
+
+## 问题反馈
+
+请在`Issues`页面提交问题反馈，注意[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)。
+
+日常交流请加入QQ群：[12370907](https://jq.qq.com/?_wv=1027&k=I1oJKSTH)。
+
+## 赞助商
+
+### CDN服务商
+
+- [盾云CDN](http://cdn.ddunyun.com/)
+
+#### 接受云资源和资金赞助，可通过Q群联系咨询
