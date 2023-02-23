@@ -76,7 +76,7 @@ class Plugin {
 				array(
 					'name'    => 'remove_news',
 					'label'   => __( '移除 WordPress活动及新闻', 'wp-china-no' ),
-					'desc'    => __( '移除后台仪表盘上的 WordPress活动及新闻 组件，可加快后台首页加载速度',
+					'desc'    => __( '移除管理后台仪表盘上的 WordPress活动及新闻 组件，可加快管理后台仪表盘的访问速度',
 						'wp-china-no' ),
 					'type'    => 'radio',
 					'default' => 'on',
