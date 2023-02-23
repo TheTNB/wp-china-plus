@@ -2,6 +2,8 @@
 
 namespace HaoZiTeam\WP_CHINA_NO\Inc;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * 设置API
  * @author 耗子

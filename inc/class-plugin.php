@@ -2,6 +2,8 @@
 
 namespace HaoZiTeam\WP_CHINA_NO\Inc;
 
+defined( 'ABSPATH' ) || exit;
+
 use HaoZiTeam\WP_CHINA_NO\Inc\Service\Super as SuperService;
 
 use const HaoZiTeam\WP_CHINA_NO\PLUGIN_DIR;
@@ -63,6 +65,18 @@ class Plugin {
 					'name'    => 'weavatar',
 					'label'   => __( 'WeAvatar头像', 'wp-china-no' ),
 					'desc'    => __( '替换Gravatar头像为<a href="https://weavatar.com" target="_blank">WeAvatar</a>头像，WeAvatar致力于打造多端多元化的统一头像服务',
+						'wp-china-no' ),
+					'type'    => 'radio',
+					'default' => 'on',
+					'options' => array(
+						'on'  => '启用',
+						'off' => '禁用'
+					)
+				),
+				array(
+					'name'    => 'remove_news',
+					'label'   => __( '移除 WordPress活动及新闻', 'wp-china-no' ),
+					'desc'    => __( '移除后台仪表盘上的 WordPress活动及新闻 组件，可加快后台首页加载速度',
 						'wp-china-no' ),
 					'type'    => 'radio',
 					'default' => 'on',
@@ -191,7 +205,7 @@ class Plugin {
 	public function plugin_page() {
 
 		echo '<h1>WP-China-No</h1>';
-		echo '<h2>一个轻量级插件，用于改善WordPress在中国大陆的使用体验。</h2><span style="float: right; padding-right: 20px;">By: HaoZiTeam@耗子</span>';
+		echo '<h2>一个轻量级插件，用于改善WordPress在中国大陆的使用体验。</h2><span style="float: right; padding-right: 20px;">By: 耗子开发组</span>';
 		echo '<div class="wrap">';
 
 		$this->settings_api->show_navigation();

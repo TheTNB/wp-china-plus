@@ -2,6 +2,8 @@
 
 namespace HaoZiTeam\WP_CHINA_NO\Inc\Service;
 
+defined( 'ABSPATH' ) || exit;
+
 use HaoZiTeam\WP_CHINA_NO\Inc\Setting;
 
 /**
@@ -25,13 +27,36 @@ class Super {
 							'downloads.wordpress.org' ) ) ) {
 						return $preempt;
 					}
-					// 判断是否包含
+
 					$url = str_replace( 'api.wordpress.org', 'wpa.cdn.haozi.net', $url );
 					$url = str_replace( 'downloads.wordpress.org', 'wpd.cdn.haozi.net', $url );
+
+					// curl版本低于7.15.0不支持https
+					$curl_version = '1.0.0';
+					if ( function_exists( 'curl_version' ) ) {
+						$curl_version_array = curl_version();
+						if ( is_array( $curl_version_array ) && key_exists( 'version', $curl_version_array ) ) {
+							$curl_version = $curl_version_array['version'];
+						}
+					}
+					if ( version_compare( $curl_version, '7.15.0', '<' ) ) {
+						$url = str_replace( 'https://', 'http://', $url );
+					}
 
 					return wp_remote_request( $url, $r );
 				}, PHP_INT_MAX, 3 );
 			}
+		}
+
+		/**
+		 * 移除 WordPress活动及新闻 小组件
+		 */
+		if ( is_admin() && $setting->get_option( 'remove_news', 'wp_china_no_setting', 'on' ) != 'off' ) {
+			add_action( 'wp_dashboard_setup', function () {
+				global $wp_meta_boxes;
+
+				unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
+			} );
 		}
 
 		/**
@@ -90,12 +115,11 @@ class Super {
 		/**
 		 * WeAvatar
 		 */
-		add_filter( 'user_profile_picture_description', [ $this, 'set_user_profile_picture_for_weavatar' ],
-			PHP_INT_MAX );
-		add_filter( 'avatar_defaults', [ $this, 'set_defaults_for_weavatar' ], PHP_INT_MAX );
-		add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_url' ], PHP_INT_MAX );
-		add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_url' ], PHP_INT_MAX );
-		add_filter( 'get_avatar_url', [ $this, 'get_weavatar_url' ], PHP_INT_MAX );
+		add_filter( 'user_profile_picture_description', [ $this, 'set_user_profile_picture_for_weavatar' ], 1 );
+		add_filter( 'avatar_defaults', [ $this, 'set_defaults_for_weavatar' ], 1 );
+		add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_url' ], 1 );
+		add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_url' ], 1 );
+		add_filter( 'get_avatar_url', [ $this, 'get_weavatar_url' ], 1 );
 
 		/**
 		 * WeAvatar 推广与指导
@@ -125,6 +149,9 @@ class Super {
 			'secure.gravatar.com',
 			'cn.gravatar.com',
 			'gravatar.com',
+			'sdn.geekzu.org',
+			'gravatar.duoshuo.com',
+			'gravatar.loli.net'
 		);
 
 		return str_replace( $sources, 'weavatar.com', $url );

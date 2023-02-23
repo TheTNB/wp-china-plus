@@ -2,6 +2,8 @@
 
 namespace HaoZiTeam\Autoload;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * An Autoloader which respects WordPress's filename standards.
  *
