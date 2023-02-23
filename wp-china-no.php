@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP-China-No
  * Description: 一个轻量级插件，用于改善WordPress在中国大陆的使用体验。
- * Author: 耗子开发组@耗子
+ * Author: 耗子开发组
  * Author URI: https://hzbk.net/
  * Version: 1.1.0
  * License: GPLv3 or later
