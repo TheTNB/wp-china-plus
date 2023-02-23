@@ -42,8 +42,9 @@ class Plugin {
 				'title' => __( '设置', 'wp-china-no' )
 			),
 			array(
-				'id'    => 'wp_china_no_about',
-				'title' => __( '关于', 'wp-china-no' )
+				'id'          => 'wp_china_no_about',
+				'title'       => __( '关于', 'wp-china-no' ),
+				'show_submit' => false
 			)
 		);
 
@@ -157,12 +158,18 @@ class Plugin {
 					'name'  => 'about',
 					'label' => __( '关于', 'wp-china-no' ),
 					'type'  => 'html',
-					'html'  => __( '<h4>Github：<a href="https://github.com/HaoZi-Team/WP-China-No" target="_blank">https://github.com/HaoZi-Team/WP-China-No</a></h4><p>WP-China-No 是 WordPress 本土化的一部分，其作用是对 WordPress 中的外部请求进行加速，以改善 WordPress 在国内的使用体验。</p><p>交流吹水群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&amp;k=I1oJKSTH">12370907</a></p><p>维护相关API服务器和节点需要一定的成本，如果可能，不妨赞助使插件发展得更好。</p>',
+					'html'  => __( '<h4>GitHub：<a href="https://github.com/HaoZi-Team/WP-China-No" target="_blank">https://github.com/HaoZi-Team/WP-China-No</a></h4><p>WP-China-No 是 WordPress 本土化的一部分，其作用是对 WordPress 中的外部请求和静态资源进行加速，改善 WordPress 在国内的使用体验。</p><p>问题反馈请前往项目的 Issues 区｜交流QQ群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&amp;k=I1oJKSTH">12370907</a>｜QQ频道：<a target="_blank" href="https://pd.qq.com/s/fyol46wfy">耗子</a></p><br><p>维护相关API服务器和节点需要一定的成本，如果可能，不妨赞助使插件发展得更好。</p>',
+						'wp-china-no' )
+				),
+				array(
+					'name'  => 'sponsor',
+					'label' => __( '赞助商', 'wp-china-no' ),
+					'type'  => 'html',
+					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="http://cdn.ddunyun.com/" target="_blank">盾云CDN</a></p>',
 						'wp-china-no' )
 				)
 			)
 		);
-
 
 		// set the settings
 		$this->settings_api->set_sections( $sections );
@@ -236,8 +243,8 @@ class Plugin {
 	 */
 	public static function check() {
 		$notices = [];
-		if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
-			$notices[] = '<div class="notice notice-error"><p>' . sprintf( __( 'WP-China-No 插件需要 PHP 5.6.0 或更高版本，当前版本为 %s，插件已自动禁用。',
+		if ( version_compare( PHP_VERSION, '5.2.0', '<' ) ) {
+			$notices[] = '<div class="notice notice-error"><p>' . sprintf( __( 'WP-China-No 插件需要 PHP 5.2.0 或更高版本，当前版本为 %s，插件已自动禁用。',
 					'wp-china-no' ),
 					PHP_VERSION ) . '</p></div>';
 			deactivate_plugins( 'wp-china-no/wp-china-no.php' );

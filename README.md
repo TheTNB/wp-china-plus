@@ -25,12 +25,12 @@
 
 请在`Issues`页面提交问题反馈，注意[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)。
 
-日常交流请加入QQ群：[12370907](https://jq.qq.com/?_wv=1027&k=I1oJKSTH)。
+交流QQ群：[12370907](https://jq.qq.com/?_wv=1027&k=I1oJKSTH) | QQ频道：[耗子](https://pd.qq.com/s/fyol46wfy)
 
 ## 赞助商
 
-### CDN服务商
+### CDN
 
 - [盾云CDN](http://cdn.ddunyun.com/)
 
-#### 接受云资源和资金赞助，可通过Q群联系咨询
+#### 接受云资源和资金赞助，可通过QQ群咨询联系
