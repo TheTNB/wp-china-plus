@@ -5,8 +5,9 @@ namespace HaoZiTeam\WP_CHINA_NO\Inc;
 defined( 'ABSPATH' ) || exit;
 
 use HaoZiTeam\WP_CHINA_NO\Inc\Service\Super as SuperService;
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-use const HaoZiTeam\WP_CHINA_NO\PLUGIN_DIR;
+use const HaoZiTeam\WP_CHINA_NO\PLUGIN_FILE;
 
 class Plugin {
 
@@ -18,9 +19,18 @@ class Plugin {
 	public function __construct() {
 		$this->settings_api = new Setting();
 		new SuperService();
+
+		// 加载插件
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( is_multisite() ? 'network_admin_menu' : 'admin_menu', array( $this, 'admin_menu' ) );
+
+		// 加载插件更新
+		PucFactory::buildUpdateChecker(
+			'https://dl.cdn.haozi.net/wp-china-no/plugin.json',
+			PLUGIN_FILE,
+			'wp-china-no'
+		);
 	}
 
 	/**
@@ -29,7 +39,7 @@ class Plugin {
 	public function plugins_loaded() {
 		add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		// 加载插件文本域
-		load_plugin_textdomain( 'wp-china-no', false, basename( PLUGIN_DIR ) . '/languages' );
+		load_plugin_textdomain( 'wp-china-no', false, plugin_dir_path( PLUGIN_FILE ) . 'languages' );
 	}
 
 	/**
