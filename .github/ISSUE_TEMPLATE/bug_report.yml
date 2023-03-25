@@ -1,5 +1,5 @@
-name: Bug Report
-description: Create a report to help us improve
+name: 报告问题 (Bug Report)
+description: 创建一个报告以帮助我们改进 (Create a report to help us improve)
 title: "[Bug Report]: "
 labels: ["bug"]
 
@@ -37,15 +37,15 @@ body:
   - type: textarea
     id: expected
     attributes:
-      label: 预期行为
-      description: 简明概要地描述你期望发生的事情。
+      label: 预期行为 (Expected behavior)
+      description: 简明概要地描述你期望发生的事情。(Briefly describe what you expect to happen.)
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
-      label: 如何复现
-      description: 重现该问题的详细步骤。
+      label: 如何复现 (How to reproduce)
+      description: 重现该问题的详细步骤。(Detailed steps to reproduce the problem.)
       value: |
         1. 安装 WP-China-No
         2. 设置 '...'
@@ -56,39 +56,38 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: 相关日志
+      label: 相关日志 (Related logs)
       description: |
-        请复制并粘贴任何相关的日志输出。
-        可以把文件拖入这个区域以添加日志文件。
-        日志文件可通过开启 WordPress 的调试模式获取。
+        请复制并粘贴任何相关的日志输出。(Please copy and paste any relevant log output.)
+        可以把文件拖入这个区域以添加日志文件。(Files can be dragged into this area to add log files.)
+        日志文件可通过开启 WordPress 的调试模式获取。(Log files can be accessed by enabling WordPress debug mode.)
       render: Text
     validations:
       required: false
   - type: textarea
     id: screenshots
     attributes:
-      label: 截图
+      label: 截图 (Screenshots)
       description: |
-        如果有，添加屏幕截图可帮助更快定位你的问题。
-        可以复制图片后在此区域内粘贴以添加图片。
-        如有必要，使用马赛克遮盖敏感信息。
+        如果有，添加屏幕截图可帮助更快定位你的问题。(If so, adding screenshots can help locate your issue faster.)
+        可以复制图片后在此区域内粘贴以添加图片。(Pictures can be copied and pasted in this area to add pictures.)
+        如有必要，使用马赛克遮盖敏感信息。(Use a mosaic to obscure sensitive information if necessary.)
     validations:
       required: false
   - type: textarea
     id: others
     attributes:
-      label: 还有别的吗？
+      label: 还有别的吗？(Anything else?)
       description: |
-        运行环境？浏览器？WordPress 版本？相关的配置？链接？参考资料？
-        任何能让我们对你所遇到的问题有更多了解的东西。
+        运行环境？浏览器？WordPress 版本？相关的配置？链接？参考资料？(Environment? Browser? WordPress version? Related configuration? Link? References?)
+        任何能让我们对你所遇到的问题有更多了解的东西。(Anything that can give us more insight into the problem you're having.)
     validations:
       required: false
   - type: textarea
     id: yellows
     attributes:
-      label: 来点色图
+      label: 来点色图 (Give some porn pictures)
       description: |
-        来点色图
-        如果你不提供色图而你的 issue 中又有其他不符合标准的地方，那么你的 issue 可能会被直接关闭。
+        如果你不提供色图而你的 issue 中又有其他不符合标准的地方，那么你的 issue 可能会被直接关闭。(If you don't provide some porn pictures and there are other non-conformities in your issue, your issue may be closed directly.)
     validations:
       required: false
