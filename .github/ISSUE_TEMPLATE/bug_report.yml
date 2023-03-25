@@ -13,7 +13,9 @@ body:
     id: checks
     attributes:
       label: 在提问之前 (Before asking)
-      description: 提问之前，先回答几个小问题。(Before asking questions, answer a few quick questions.)
+      description: |
+        提问之前，先回答几个小问题。
+        Before asking questions, answer a few quick questions.
       options:
       - label: 我已经搜索了现有的 Issues 和 Discussions (I've searched the existing Issues and Discussions)
         required: true
@@ -31,21 +33,27 @@ body:
     id: describe
     attributes:
       label: 描述问题 (Describe the problem)
-      description: 简明概要地描述你遇到的问题。(Briefly describe the problem you are having.)
+      description: |
+        简明概要地描述你遇到的问题。
+        Briefly describe the problem you are having.
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
       label: 预期行为 (Expected behavior)
-      description: 简明概要地描述你期望发生的事情。(Briefly describe what you expect to happen.)
+      description: |
+        简明概要地描述你期望发生的事情。
+        Briefly describe what you expect to happen.
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
       label: 如何复现 (How to reproduce)
-      description: 重现该问题的详细步骤。(Detailed steps to reproduce the problem.)
+      description: |
+        重现该问题的详细步骤。
+        Detailed steps to reproduce the problem.
       value: |
         1. 安装 WP-China-No
         2. 设置 '...'
@@ -58,9 +66,12 @@ body:
     attributes:
       label: 相关日志 (Related logs)
       description: |
-        请复制并粘贴任何相关的日志输出。(Please copy and paste any relevant log output.)
-        可以把文件拖入这个区域以添加日志文件。(Files can be dragged into this area to add log files.)
-        日志文件可通过开启 WordPress 的调试模式获取。(Log files can be accessed by enabling WordPress debug mode.)
+        请复制并粘贴任何相关的日志输出。
+        Please copy and paste any relevant log output.
+        可以把文件拖入这个区域以添加日志文件。
+        Files can be dragged into this area to add log files.
+        日志文件可通过开启 WordPress 的调试模式获取。
+        Log files can be accessed by enabling WordPress debug mode.
       render: Text
     validations:
       required: false
@@ -69,9 +80,12 @@ body:
     attributes:
       label: 截图 (Screenshots)
       description: |
-        如果有，添加屏幕截图可帮助更快定位你的问题。(If so, adding screenshots can help locate your issue faster.)
-        可以复制图片后在此区域内粘贴以添加图片。(Pictures can be copied and pasted in this area to add pictures.)
-        如有必要，使用马赛克遮盖敏感信息。(Use a mosaic to obscure sensitive information if necessary.)
+        如果有，添加屏幕截图可帮助更快定位你的问题。
+        If so, adding screenshots can help locate your issue faster.
+        可以复制图片后在此区域内粘贴以添加图片。
+        Pictures can be copied and pasted in this area to add pictures.
+        如有必要，使用马赛克遮盖敏感信息。
+        Use a mosaic to obscure sensitive information if necessary.
     validations:
       required: false
   - type: textarea
@@ -79,15 +93,18 @@ body:
     attributes:
       label: 还有别的吗？(Anything else?)
       description: |
-        运行环境？浏览器？WordPress 版本？相关的配置？链接？参考资料？(Environment? Browser? WordPress version? Related configuration? Link? References?)
-        任何能让我们对你所遇到的问题有更多了解的东西。(Anything that can give us more insight into the problem you're having.)
+        运行环境？浏览器？WordPress 版本？相关的配置？链接？参考资料？
+        Environment? Browser? WordPress version? Related configuration? Link? References?
+        任何能让我们对你所遇到的问题有更多了解的东西。
+        Anything that can give us more insight into the problem you're having.
     validations:
       required: false
   - type: textarea
     id: yellows
     attributes:
-      label: 来点色图 (Give some porn pictures)
+      label: 来点色图 (Porn pictures)
       description: |
-        如果你不提供色图而你的 issue 中又有其他不符合标准的地方，那么你的 issue 可能会被直接关闭。(If you don't provide some porn pictures and there are other non-conformities in your issue, your issue may be closed directly.)
+        如果你不提供色图而你的 issue 中又有其他不符合标准的地方，那么你的 issue 可能会被直接关闭。
+        If you don't provide some porn pictures and there are other non-conformities in your issue, then your issue may be closed directly.
     validations:
       required: false
