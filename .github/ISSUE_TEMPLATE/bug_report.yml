@@ -1,11 +1,14 @@
 name: Bug Report
 description: Create a report to help us improve
+title: "[Bug Report]: "
 labels: ["bug"]
+
 body:
   - type: checkboxes
     id: checks
     attributes:
       label: 在提问之前...
+      description: 提问之前，先回答几个小问题。
       options:
       - label: 我已经搜索了现有的 Issues 和 Discussions
         required: true
