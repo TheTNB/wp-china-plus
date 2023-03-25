@@ -1,38 +1,86 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
----
-
-**Describe the bug**
-A clear and concise description of what the bug is.
-
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
-
-**Expected behavior**
-A clear and concise description of what you expected to happen.
-
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+name: Bug Report
+description: Create a report to help us improve
+labels: ["bug"]
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 在提问之前...
+      options:
+      - label: 我已经搜索了现有的 Issues 和 Discussions
+        required: true
+      - label: 我已经阅读了 README 中除版本记录以外的所有内容
+        required: true
+      - label: 我在提问题之前至少花费了 5 分钟来思考和准备
+        required: true
+      - label: 这个问题出现在最新版的 WP-China-No 上
+        required: false
+      - label: 这个问题出现了至少 3 次
+        required: false
+      - label: 我使用过旧版的 WP-China-No 并且没有出现这个问题
+        required: false
+  - type: textarea
+    id: describe
+    attributes:
+      label: 描述问题
+      description: 简明概要地描述你遇到的问题
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 简明概要地描述你期望发生的事情
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 如何复现
+      description: 重现该行为的步骤
+      value: |
+        1. 安装 WP-China-No
+        2. 设置 '...'
+        3. 点击 '...'
+        4. 出现问题
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志
+      description: |
+        请复制并粘贴任何相关的日志输出。
+        可以把文件拖入这个区域以添加日志文件。
+        日志文件可通过开启 WordPress 的调试模式获取。
+      render: Text
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图
+      description: |
+        如果有，添加屏幕截图可帮助更快定位你的问题。
+        可以复制图片后在此区域内粘贴以添加图片。
+        如有必要，使用马赛克遮盖敏感信息。
+    validations:
+      required: false
+  - type: textarea
+    id: others
+    attributes:
+      label: 还有别的吗？
+      description: |
+        运行环境？浏览器？WordPress 版本？相关的配置？链接？参考资料？
+        任何能让我们对你所遇到的问题有更多了解的东西。
+    validations:
+      required: false
+  - type: textarea
+    id: yellows
+    attributes:
+      label: 来点色图
+      description: |
+        来点色图
+        如果你不提供色图而你的 issue 中又有其他不符合标准的地方，那么你的 issue 可能会被直接关闭。
+    validations:
+      required: false
