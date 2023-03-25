@@ -6,10 +6,12 @@ labels: ["enhancement"]
 body:
   - type: checkboxes
     attributes:
-      label: 是否已经存在?
-      description: 请先搜索现有的 Issues 和 Commits，确保没有重复提交
+      label: 在提问之前...
+      description: 提问之前，先回答几个小问题。
       options:
         - label: 我已经搜索了全部 Issues 和 Commits
+          required: true
+        - label: 它们当中没有我将要提交的新功能
           required: true
   - type: textarea
     id: feature
