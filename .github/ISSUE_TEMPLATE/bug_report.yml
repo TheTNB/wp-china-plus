@@ -4,29 +4,34 @@ title: "[Bug Report]: "
 labels: ["bug"]
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **请仅使用 简体中文 或 英文 进行填写**
+        **Please only use Simplified Chinese or English to fill in**
   - type: checkboxes
     id: checks
     attributes:
-      label: 在提问之前...
-      description: 提问之前，先回答几个小问题。
+      label: 在提问之前 (Before asking)
+      description: 提问之前，先回答几个小问题。(Before asking questions, answer a few quick questions.)
       options:
-      - label: 我已经搜索了现有的 Issues 和 Discussions
+      - label: 我已经搜索了现有的 Issues 和 Discussions (I've searched the existing Issues and Discussions)
         required: true
-      - label: 我已经阅读了 README 中除版本记录以外的所有内容
+      - label: 我已经阅读了 README 中除版本记录以外的所有内容 (I've read everything in the README except the version notes)
         required: true
-      - label: 我在提问题之前至少花费了 5 分钟来思考和准备
+      - label: 我在提问题之前至少花费了 5 分钟来思考和准备 (I spend at least 5 minutes thinking and preparing before asking a question)
         required: true
-      - label: 这个问题出现在最新版的 WP-China-No 上
+      - label: 这个问题出现在最新版的 WP-China-No 上 (This question appears on the latest version of WP-China-No)
         required: false
-      - label: 这个问题出现了至少 3 次
+      - label: 我使用过旧版的 WP-China-No 并且没有出现这个问题 (I've used an older version of WP-China-No and didn't have this problem)
         required: false
-      - label: 我使用过旧版的 WP-China-No 并且没有出现这个问题
+      - label: 这个问题出现了至少 3 次 (This question has occurred at least 3 times)
         required: false
   - type: textarea
     id: describe
     attributes:
-      label: 描述问题
-      description: 简明概要地描述你遇到的问题。
+      label: 描述问题 (Describe the problem)
+      description: 简明概要地描述你遇到的问题。(Briefly describe the problem you are having.)
     validations:
       required: true
   - type: textarea
