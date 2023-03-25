@@ -18,22 +18,22 @@ body:
         Before asking questions, answer a few quick questions.
       options:
       - label: 我已经搜索了现有的 Issues 和 Discussions
-        description: I've searched the existing Issues and Discussions
+        description: "I've searched the existing Issues and Discussions"
         required: true
       - label: 我已经阅读了 README 中除版本记录以外的所有内容
-        description: I've read everything in the README except the version notes
+        description: "I've read everything in the README except the version notes"
         required: true
       - label: 我在提问题之前至少花费了 5 分钟来思考和准备
-        description: I spend at least 5 minutes thinking and preparing before asking a question
+        description: "I spend at least 5 minutes thinking and preparing before asking a question"
         required: true
       - label: 这个问题出现在最新版的 WP-China-No 上
-        description: This question appears on the latest version of WP-China-No
+        description: "This question appears on the latest version of WP-China-No"
         required: false
       - label: 我使用过旧版的 WP-China-No 并且没有出现这个问题
-        description: I've used an older version of WP-China-No and didn't have this problem
+        description: "I've used an older version of WP-China-No and didn't have this problem"
         required: false
       - label: 这个问题出现了至少 3 次
-        description: This question has occurred at least 3 times
+        description: "This question has occurred at least 3 times"
         required: false
   - type: textarea
     id: describe
