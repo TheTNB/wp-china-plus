@@ -23,21 +23,21 @@ body:
     id: describe
     attributes:
       label: 描述问题
-      description: 简明概要地描述你遇到的问题
+      description: 简明概要地描述你遇到的问题。
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
       label: 预期行为
-      description: 简明概要地描述你期望发生的事情
+      description: 简明概要地描述你期望发生的事情。
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
       label: 如何复现
-      description: 重现该行为的步骤
+      description: 重现该问题的详细步骤。
       value: |
         1. 安装 WP-China-No
         2. 设置 '...'
