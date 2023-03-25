@@ -1,0 +1,49 @@
+name: Feature request
+description: Suggest an idea for this project
+title: "[Feature Request]: "
+labels: ["enhancement"]
+
+body:
+  - type: checkboxes
+    attributes:
+      label: 是否已经存在?
+      description: 请先搜索现有的 Issues 和 Commits，确保没有重复提交
+      options:
+        - label: 我已经搜索了全部 Issues 和 Commits
+          required: true
+  - type: textarea
+    id: feature
+    attributes:
+      label: 描述功能
+      description: 简明概要地描述你的新功能，以及它将解决什么问题。
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: 工作流程
+      description: 请向我们提供有关该功能的实现流程。
+      value: |
+        1. 新建文件 ....
+        2. 添加函数 ....
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: others
+    attributes:
+      label: 还有别的吗？
+      description: |
+        运行环境？浏览器？WordPress 版本？相关的配置？链接？参考资料？
+        任何能让我们对该功能的实现有更多帮助的东西。
+    validations:
+      required: false
+  - type: textarea
+    id: yellows
+    attributes:
+      label: 来点色图
+      description: |
+        来点色图
+        如果你不提供色图而你的 issue 中又有其他不符合标准的地方，那么你的 issue 可能会被直接关闭。
+    validations:
+      required: false
