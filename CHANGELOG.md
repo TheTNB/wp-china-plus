@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `WP-China-No` will be documented in this file.
+All notable changes to `WP-China-Plus` will be documented in this file.
 
 ## 1.4.0 - 2023-03-21
 

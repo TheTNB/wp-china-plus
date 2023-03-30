@@ -1,16 +1,16 @@
 <?php
 
-namespace HaoZiTeam\WP_CHINA_NO\Inc\Service;
+namespace HaoZiTeam\WP_CHINA_PLUS\Inc\Service;
 
 defined( 'ABSPATH' ) || exit;
 
-use HaoZiTeam\WP_CHINA_NO\Inc\Setting;
+use HaoZiTeam\WP_CHINA_PLUS\Inc\Setting;
 
 /**
  * Class Super
  * 该类用于实现插件的加速功能
  * 核心代码来自 WP-China-Yes 项目
- * @package HaoZiTeam\WP_CHINA_NO\Inc\Service
+ * @package HaoZiTeam\WP_CHINA_PLUS\Inc\Service
  */
 class Super {
 
@@ -21,7 +21,7 @@ class Super {
 		 * WordPress.Org API替换
 		 */
 		if ( is_admin() || wp_doing_cron() ) {
-			if ( $setting->get_option( 'super_store', 'wp_china_no_setting', 'on' ) != 'off' ) {
+			if ( $setting->get_option( 'super_store', 'wp_china_plus_setting', 'on' ) != 'off' ) {
 				add_filter( 'pre_http_request', function ( $preempt, $r, $url ) {
 					if ( ( ! strpos( $url, 'api.wordpress.org' ) && ! strpos( $url,
 							'downloads.wordpress.org' ) ) ) {
@@ -51,7 +51,7 @@ class Super {
 		/**
 		 * 移除 WordPress活动及新闻 小组件
 		 */
-		if ( is_admin() && $setting->get_option( 'remove_news', 'wp_china_no_setting', 'on' ) != 'off' ) {
+		if ( is_admin() && $setting->get_option( 'remove_news', 'wp_china_plus_setting', 'on' ) != 'off' ) {
 			add_action( 'wp_dashboard_setup', function () {
 				global $wp_meta_boxes;
 
@@ -64,7 +64,7 @@ class Super {
 		 */
 		if ( is_admin() && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 			if (
-				$setting->get_option( 'super_admin', 'wp_china_no_setting', 'on' ) != 'off' &&
+				$setting->get_option( 'super_admin', 'wp_china_plus_setting', 'on' ) != 'off' &&
 				! stristr( $GLOBALS['wp_version'], 'alpha' ) &&
 				! stristr( $GLOBALS['wp_version'], 'beta' ) &&
 				! stristr( $GLOBALS['wp_version'], 'RC' )
@@ -84,31 +84,31 @@ class Super {
 			/**
 			 * 谷歌字体替换
 			 */
-			if ( $setting->get_option( 'super_gfont', 'wp_china_no_setting', 'off' ) != 'off' ) {
+			if ( $setting->get_option( 'super_gfont', 'wp_china_plus_setting', 'off' ) != 'off' ) {
 				$this->page_str_replace( 'str_replace', [
 					'fonts.googleapis.com',
 					'gfont.cdn.haozi.net'
-				], $setting->get_option( 'super_gfont', 'wp_china_no_setting', 'off' ) );
+				], $setting->get_option( 'super_gfont', 'wp_china_plus_setting', 'off' ) );
 			}
 
 			/**
 			 * 谷歌前端公共库替换
 			 */
-			if ( $setting->get_option( 'super_gajax', 'wp_china_no_setting', 'off' ) != 'off' ) {
+			if ( $setting->get_option( 'super_gajax', 'wp_china_plus_setting', 'off' ) != 'off' ) {
 				$this->page_str_replace( 'str_replace', [
 					'ajax.googleapis.com',
 					'gajax.cdn.haozi.net'
-				], $setting->get_option( 'super_gajax', 'wp_china_no_setting', 'off' ) );
+				], $setting->get_option( 'super_gajax', 'wp_china_plus_setting', 'off' ) );
 			}
 
 			/**
 			 * CDNJS前端公共库替换
 			 */
-			if ( $setting->get_option( 'super_cdnjs', 'wp_china_no_setting', 'off' ) != 'off' ) {
+			if ( $setting->get_option( 'super_cdnjs', 'wp_china_plus_setting', 'off' ) != 'off' ) {
 				$this->page_str_replace( 'str_replace', [
 					'cdnjs.cloudflare.com/ajax/libs',
 					'cdnjs.cdn.haozi.net'
-				], $setting->get_option( 'super_cdnjs', 'wp_china_no_setting', 'off' ) );
+				], $setting->get_option( 'super_cdnjs', 'wp_china_plus_setting', 'off' ) );
 			}
 		}
 
@@ -124,7 +124,7 @@ class Super {
 		/**
 		 * WeAvatar 推广与指导
 		 */
-		if ( $setting->get_option( 'email', 'wp_china_no_setting', 'on' ) != 'off' ) {
+		if ( $setting->get_option( 'email', 'wp_china_plus_setting', 'on' ) != 'off' ) {
 			add_filter( 'wp_mail', function ( $args ) {
 				// 将 mail_content_type 设置为 text/html，以便于在邮件中使用 HTML 标签
 				add_filter( 'wp_mail_content_type', function () {

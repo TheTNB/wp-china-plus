@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: WP-China-No
+ * Plugin Name: WP-China-Plus
  * Description: 一个轻量级插件，用于改善WordPress在中国大陆的使用体验。
- * Author: 耗子开发组
- * Author URI: https://hzbk.net/
- * Version: 1.4.0
+ * Author: 耗子开源
+ * Author URI: https://github.com/HaoZi-Team/WP-China-Plus
+ * Version: 2.0.0
  * License: GPLv3 or later
- * Text Domain: wp-china-no
+ * Text Domain: wp-china-plus
  * Domain Path: /languages
  * Network: True
  * Requires at least: 4.9
@@ -15,14 +15,14 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-namespace HaoZiTeam\WP_CHINA_NO;
+namespace HaoZiTeam\WP_CHINA_PLUS;
 
 defined( 'ABSPATH' ) || exit;
 
-use HaoZiTeam\WP_CHINA_NO\Inc\Plugin;
+use HaoZiTeam\WP_CHINA_PLUS\Inc\Plugin;
 use HaoZiTeam\Autoload;
 
-const VERSION     = '1.4.0';
+const VERSION     = '2.0.0';
 const PLUGIN_FILE = __FILE__;
 
 // 加载自动加载器
@@ -35,7 +35,7 @@ Autoload\register_class_path( __NAMESPACE__ . '\Inc', plugin_dir_path( PLUGIN_FI
 
 // 注册插件激活钩子
 register_activation_hook( PLUGIN_FILE, [ Plugin::class, 'activate' ] );
-// 注册插件停用钩子
-register_deactivation_hook( PLUGIN_FILE, [ Plugin::class, 'deactivate' ] );
+// 注册插件删除钩子
+register_uninstall_hook( PLUGIN_FILE, [ Plugin::class, 'uninstall' ] );
 
 new Plugin();

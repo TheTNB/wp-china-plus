@@ -23,9 +23,9 @@ body:
         required: true
       - label: 我在提问题之前至少花费了 5 分钟来思考和准备 (I spend at least 5 minutes thinking and preparing before asking a question)
         required: true
-      - label: 这个问题出现在最新版的 WP-China-No 上 (This question appears on the latest version of WP-China-No)
+      - label: 这个问题出现在最新版的 WP-China-Plus 上 (This question appears on the latest version of WP-China-Plus)
         required: false
-      - label: 我使用过旧版的 WP-China-No 并且没有出现这个问题 (I've used an older version of WP-China-No and didn't have this problem)
+      - label: 我使用过旧版的 WP-China-Plus 并且没有出现这个问题 (I've used an older version of WP-China-Plus and didn't have this problem)
         required: false
       - label: 这个问题出现了至少 3 次 (This question has occurred at least 3 times)
         required: false
@@ -55,7 +55,7 @@ body:
         重现该问题的详细步骤。
         Detailed steps to reproduce the problem.
       value: |
-        1. 安装 WP-China-No
+        1. 安装 WP-China-Plus
         2. 设置 '...'
         3. 点击 '...'
         4. 出现问题

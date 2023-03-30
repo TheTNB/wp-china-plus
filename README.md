@@ -1,4 +1,4 @@
-# WP-China-No
+# WP-China-Plus
 
 一个轻量级插件，用于改善WordPress在中国大陆的使用体验。
 

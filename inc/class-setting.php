@@ -1,6 +1,6 @@
 <?php
 
-namespace HaoZiTeam\WP_CHINA_NO\Inc;
+namespace HaoZiTeam\WP_CHINA_PLUS\Inc;
 
 defined( 'ABSPATH' ) || exit;
 
