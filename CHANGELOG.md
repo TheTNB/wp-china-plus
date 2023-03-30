@@ -2,6 +2,11 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.0.0 - 2023-03-30
+
+1. 改名为WP-China-Plus
+2. 由于slug变更，所以无法通过推送完成此次升级，请手动下载插件并安装进行此次升级
+
 ## 1.4.0 - 2023-03-21
 
 1. 支持后台在线更新
