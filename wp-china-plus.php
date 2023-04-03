@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 use HaoZiTeam\WP_CHINA_PLUS\Inc\Plugin;
 use HaoZiTeam\Autoload;
 
-const VERSION     = '2.0.0';
+const VERSION     = '2.0.1';
 const PLUGIN_FILE = __FILE__;
 
 // 加载自动加载器
