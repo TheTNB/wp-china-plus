@@ -222,7 +222,7 @@ class Plugin {
 	public function plugin_page() {
 
 		echo '<h1>WP-China-Plus</h1>';
-		echo '<h2>一个轻量级插件，用于改善WordPress在中国大陆的使用体验。</h2><span style="float: right; padding-right: 20px;">By: 耗子开源</span>';
+		echo '<h4>我们的终极目标是打造一个本土化的 WordPress，包括应用市场、翻译、文档等方面。这需要非常大量的开发工作。</h4><h4>如果你也对此感兴趣且熟悉 WordPress 开发 / Vue 开发 / Golang 开发，欢迎通过下方关于页面的联系方式加入我们。</h4><span style="float: right; padding-right: 20px;">By: 耗子开源</span>';
 		echo '<div class="wrap">';
 
 		$this->settings_api->show_navigation();
