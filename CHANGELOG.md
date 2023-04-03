@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.0.1 - 2023-04-03
+
+1. 添加项目的招募信息
+
 ## 2.0.0 - 2023-03-30
 
 1. 改名为WP-China-Plus
