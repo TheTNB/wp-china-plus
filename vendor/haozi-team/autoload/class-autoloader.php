@@ -58,7 +58,7 @@ class Autoloader {
 	 * @param  string  $class  The class to be loaded.
 	 */
 	public function load( $class ) {
-		if ( ! str_starts_with( $class, $this->prefix . self::NS_SEPARATOR ) ) {
+		if ( strpos( $class, $this->prefix . self::NS_SEPARATOR ) !== 0 ) {
 			return;
 		}
 
