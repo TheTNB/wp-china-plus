@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.0.2 - 2023-04-29
+
+1. 修复PHP7.x 5.x兼容问题
+
 ## 2.0.1 - 2023-04-03
 
 1. 添加项目的招募信息
