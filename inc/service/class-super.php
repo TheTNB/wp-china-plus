@@ -118,9 +118,22 @@ class Super {
 		if ( $setting->get_option( 'weavatar', 'wp_china_plus_setting', 'on' ) != 'off' ) {
 			add_filter( 'user_profile_picture_description', [ $this, 'set_user_profile_picture_for_weavatar' ], 1 );
 			add_filter( 'avatar_defaults', [ $this, 'set_defaults_for_weavatar' ], 1 );
-			add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_url' ], 1 );
-			add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_url' ], 1 );
-			add_filter( 'get_avatar_url', [ $this, 'get_weavatar_url' ], 1 );
+
+			if ( $setting->get_option( 'weavatar', 'wp_china_plus_setting', 'on' ) != 'cc' ) {
+				add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_com_url' ], 1 );
+				add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_com_url' ], 1 );
+				add_filter( 'get_avatar_url', [ $this, 'get_weavatar_com_url' ], 1 );
+				add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_com_url' ], PHP_INT_MAX );
+				add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_com_url' ], PHP_INT_MAX );
+				add_filter( 'get_avatar_url', [ $this, 'get_weavatar_com_url' ], PHP_INT_MAX );
+			} else {
+				add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_cc_url' ], 1 );
+				add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_cc_url' ], 1 );
+				add_filter( 'get_avatar_url', [ $this, 'get_weavatar_cc_url' ], 1 );
+				add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_cc_url' ], PHP_INT_MAX );
+				add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_cc_url' ], PHP_INT_MAX );
+				add_filter( 'get_avatar_url', [ $this, 'get_weavatar_cc_url' ], PHP_INT_MAX );
+			}
 		}
 
 		/**
@@ -140,9 +153,9 @@ class Super {
 	}
 
 	/**
-	 * 头像替换函数
+	 * 头像替换函数（com域名）
 	 */
-	function get_weavatar_url( $url ) {
+	function get_weavatar_com_url( $url ) {
 		$sources = array(
 			'www.gravatar.com',
 			'0.gravatar.com',
@@ -155,13 +168,31 @@ class Super {
 			'gravatar.duoshuo.com',
 			'gravatar.loli.net',
 			'cravatar.cn',
+			'weavatar.cc',
 		);
 
-		if ( $setting->get_option( 'weavatar', 'wp_china_plus_setting', 'on' ) != 'cc' ) {
-			return str_replace( $sources, 'weavatar.com', $url );
-		} else {
-			return str_replace( $sources, 'weavatar.cc', $url );
-		}
+		return str_replace( $sources, 'weavatar.com', $url );
+	}
+
+	/**
+	 * 头像替换函数（cc域名）
+	 */
+	function get_weavatar_cc_url( $url ) {
+		$sources = array(
+			'www.gravatar.com',
+			'0.gravatar.com',
+			'1.gravatar.com',
+			'2.gravatar.com',
+			'secure.gravatar.com',
+			'cn.gravatar.com',
+			'gravatar.com',
+			'sdn.geekzu.org',
+			'gravatar.duoshuo.com',
+			'gravatar.loli.net',
+			'weavatar.com',
+		);
+
+		return str_replace( $sources, 'weavatar.cc', $url );
 	}
 
 	/**
