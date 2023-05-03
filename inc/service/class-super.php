@@ -115,11 +115,13 @@ class Super {
 		/**
 		 * WeAvatar
 		 */
-		add_filter( 'user_profile_picture_description', [ $this, 'set_user_profile_picture_for_weavatar' ], 1 );
-		add_filter( 'avatar_defaults', [ $this, 'set_defaults_for_weavatar' ], 1 );
-		add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_url' ], 1 );
-		add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_url' ], 1 );
-		add_filter( 'get_avatar_url', [ $this, 'get_weavatar_url' ], 1 );
+		if ( $setting->get_option( 'weavatar', 'wp_china_plus_setting', 'on' ) != 'off' ) {
+			add_filter( 'user_profile_picture_description', [ $this, 'set_user_profile_picture_for_weavatar' ], 1 );
+			add_filter( 'avatar_defaults', [ $this, 'set_defaults_for_weavatar' ], 1 );
+			add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_url' ], 1 );
+			add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_url' ], 1 );
+			add_filter( 'get_avatar_url', [ $this, 'get_weavatar_url' ], 1 );
+		}
 
 		/**
 		 * WeAvatar 推广与指导
@@ -151,10 +153,15 @@ class Super {
 			'gravatar.com',
 			'sdn.geekzu.org',
 			'gravatar.duoshuo.com',
-			'gravatar.loli.net'
+			'gravatar.loli.net',
+			'cravatar.cn',
 		);
 
-		return str_replace( $sources, 'weavatar.com', $url );
+		if ( $setting->get_option( 'weavatar', 'wp_china_plus_setting', 'on' ) != 'cc' ) {
+			return str_replace( $sources, 'weavatar.com', $url );
+		} else {
+			return str_replace( $sources, 'weavatar.cc', $url );
+		}
 	}
 
 	/**

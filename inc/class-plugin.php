@@ -75,12 +75,13 @@ class Plugin {
 				array(
 					'name'    => 'weavatar',
 					'label'   => __( 'WeAvatar头像', 'wp-china-plus' ),
-					'desc'    => __( '替换Gravatar头像为<a href="https://weavatar.com" target="_blank">WeAvatar</a>头像，WeAvatar致力于打造多端多元化的统一头像服务',
+					'desc'    => __( '替换Gravatar头像为<a href="https://weavatar.com" target="_blank">WeAvatar</a>头像，WeAvatar致力于打造多端多元化的统一头像服务<br><b>若您网站不符合大陆相关法规要求，建议使用cc域名，否则有可能导致网站被拉黑无法使用</b>',
 						'wp-china-plus' ),
 					'type'    => 'radio',
 					'default' => 'on',
 					'options' => array(
-						'on'  => '启用',
+						'on'  => '启用（com域名）',
+						'cc'  => '启用（cc域名）',
 						'off' => '禁用'
 					)
 				),
