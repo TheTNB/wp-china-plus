@@ -2,6 +2,11 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.0.3 - 2023-05-03
+
+1. 调整了头像替换的优先级和参数，解决部分主题不生效的问题
+2. 头像增加域名选择功能
+
 ## 2.0.2 - 2023-04-29
 
 1. 修复PHP7.x 5.x兼容问题
