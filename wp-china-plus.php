@@ -4,7 +4,7 @@
  * Description: 一个轻量级插件，用于改善WordPress在中国大陆的使用体验。
  * Author: 耗子开源
  * Author URI: https://github.com/HaoZi-Team/WP-China-Plus
- * Version: 2.0.3
+ * Version: 2.0.4
  * License: GPLv3 or later
  * Text Domain: wp-china-plus
  * Domain Path: /languages
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 use HaoZiTeam\WP_CHINA_PLUS\Inc\Plugin;
 use HaoZiTeam\Autoload;
 
-const VERSION     = '2.0.3';
+const VERSION     = '2.0.4';
 const PLUGIN_FILE = __FILE__;
 
 // 加载自动加载器

@@ -75,13 +75,12 @@ class Plugin {
 				array(
 					'name'    => 'weavatar',
 					'label'   => __( 'WeAvatar头像', 'wp-china-plus' ),
-					'desc'    => __( '替换Gravatar头像为<a href="https://weavatar.com" target="_blank">WeAvatar</a>头像，WeAvatar致力于打造多端多元化的统一头像服务<br><b>若您网站不符合大陆相关法规要求，建议使用cc域名，否则有可能导致网站被拉黑无法使用</b>',
+					'desc'    => __( '替换Gravatar头像为<a href="https://weavatar.com" target="_blank">WeAvatar</a>头像，WeAvatar致力于打造多端多元化的统一头像服务',
 						'wp-china-plus' ),
 					'type'    => 'radio',
 					'default' => 'on',
 					'options' => array(
-						'on'  => '启用（com域名）',
-						'cc'  => '启用（cc域名）',
+						'on'  => '启用',
 						'off' => '禁用'
 					)
 				),
@@ -176,7 +175,7 @@ class Plugin {
 					'name'  => 'sponsor',
 					'label' => __( '赞助商', 'wp-china-plus' ),
 					'type'  => 'html',
-					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="http://cdn.ddunyun.com/" target="_blank">盾云CDN</a></p>',
+					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="https://www.ddunyun.com/" target="_blank">盾云</a></p><p><a href="http://cdn.ddunyun.com/" target="_blank">盾云CDN</a></p><p><a href="https://www.upyun.com/" target="_blank">又拍云</a></p>',
 						'wp-china-plus' )
 				)
 			)
