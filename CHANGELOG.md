@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.0.4 - 2023-05-31
+
+1. remove cc domain
+
 ## 2.0.3 - 2023-05-03
 
 1. 调整了头像替换的优先级和参数，解决部分主题不生效的问题
