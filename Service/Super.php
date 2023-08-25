@@ -37,6 +37,11 @@ class Super {
 
 				unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
 			} );
+			add_action( 'wp_network_dashboard_setup', function () {
+				global $wp_meta_boxes;
+
+				unset( $wp_meta_boxes['dashboard-network']['side']['core']['dashboard_primary'] );
+			} );
 		}
 
 		/**
