@@ -1,0 +1,24 @@
+{
+    "name": "haozi-team/wp-china-plus",
+    "description": "WordPress Optimized Plugin for Mainland China",
+    "type": "project",
+    "require": {
+        "haozi-team/wp-setting-api": "^1.0",
+        "yahnis-elsts/plugin-update-checker": "^5.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HaoZiTeam\\ChinaPlus\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "耗子",
+            "email": "i@haozi.net"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true
+    }
+}
