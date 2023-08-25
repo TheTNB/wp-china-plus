@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.1.1 - 2023-08-25
+
+1. 管理后台WordPress活动及新闻移除支持站群网络
+
 ## 2.1.0 - 2023-08-25
 
 1. 重构插件使用 composer 加载
