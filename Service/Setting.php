@@ -45,10 +45,11 @@ class Setting {
 					'desc'    => __( '替换 WordPress 应用市场使用加速镜像，这将极大优化您的 WordPress 使用体验',
 						'wp-china-plus' ),
 					'type'    => 'radio',
-					'default' => 'on',
+					'default' => 'proxy',
 					'options' => [
-						'on'  => '启用',
-						'off' => '禁用'
+						'proxy' => 'WordPress.Org 反代',
+						'super' => 'WePublish 应用市场',
+						'off'   => '禁用'
 					]
 				],
 				[

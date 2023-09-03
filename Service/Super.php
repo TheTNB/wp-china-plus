@@ -5,221 +5,217 @@ namespace HaoZiTeam\ChinaPlus\Service;
 defined( 'ABSPATH' ) || exit;
 
 use HaoZiTeam\Setting\API;
-use WP_Error;
 
 /**
- * Class Super
- * 插件加速服务
+ * Class Setting
+ * 插件设置服务
  * @package HaoZiTeam\ChinaPlus\Service
  */
-class Super {
-
-	private $setting;
+class Setting {
+	private $setting_api;
 
 	public function __construct() {
-		$this->setting = new API();
-
-		/**
-		 * WordPress.Org API替换
-		 */
-		if ( is_admin() || wp_doing_cron() ) {
-			if ( $this->setting->get_option( 'super_store', 'wp_china_plus_setting', 'on' ) != 'off' ) {
-				add_filter( 'pre_http_request', [ $this, 'filter_wordpress_org' ], 999999, 3 );
-			}
-		}
-
-		/**
-		 * 移除 WordPress活动及新闻 小组件
-		 */
-		if ( is_admin() && $this->setting->get_option( 'remove_news', 'wp_china_plus_setting', 'on' ) != 'off' ) {
-			add_action( 'wp_dashboard_setup', function () {
-				global $wp_meta_boxes;
-
-				unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
-			} );
-			add_action( 'wp_network_dashboard_setup', function () {
-				global $wp_meta_boxes;
-
-				unset( $wp_meta_boxes['dashboard-network']['side']['core']['dashboard_primary'] );
-			} );
-		}
-
-		/**
-		 * WordPress 核心静态文件链接替换
-		 */
-		if ( is_admin() && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-			if (
-				$this->setting->get_option( 'super_admin', 'wp_china_plus_setting', 'on' ) != 'off' &&
-				! stristr( $GLOBALS['wp_version'], 'alpha' ) &&
-				! stristr( $GLOBALS['wp_version'], 'beta' ) &&
-				! stristr( $GLOBALS['wp_version'], 'RC' )
-			) {
-				// 禁用合并加载，以便于使用公共资源节点
-				global $concatenate_scripts;
-				$concatenate_scripts = false;
-
-				$this->page_str_replace( 'preg_replace', [
-					'~' . home_url( '/' ) . '(wp-admin|wp-includes)/(css|js)/~',
-					sprintf( 'https://wpstatic.cdn.haozi.net/%s/$1/$2/', $GLOBALS['wp_version'] )
-				], 'back' );
-			}
-		}
-
-		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-			/**
-			 * 谷歌字体替换
-			 */
-			if ( $this->setting->get_option( 'super_gfont', 'wp_china_plus_setting', 'off' ) != 'off' ) {
-				$this->page_str_replace( 'str_replace', [
-					'fonts.googleapis.com',
-					'gfont.cdn.haozi.net'
-				], $this->setting->get_option( 'super_gfont', 'wp_china_plus_setting', 'off' ) );
-			}
-
-			/**
-			 * 谷歌前端公共库替换
-			 */
-			if ( $this->setting->get_option( 'super_gajax', 'wp_china_plus_setting', 'off' ) != 'off' ) {
-				$this->page_str_replace( 'str_replace', [
-					'ajax.googleapis.com',
-					'gajax.cdn.haozi.net'
-				], $this->setting->get_option( 'super_gajax', 'wp_china_plus_setting', 'off' ) );
-			}
-
-			/**
-			 * CDNJS 前端公共库替换
-			 */
-			if ( $this->setting->get_option( 'super_cdnjs', 'wp_china_plus_setting', 'off' ) != 'off' ) {
-				$this->page_str_replace( 'str_replace', [
-					'cdnjs.cloudflare.com/ajax/libs',
-					'cdnjs.cdn.haozi.net'
-				], $this->setting->get_option( 'super_cdnjs', 'wp_china_plus_setting', 'off' ) );
-			}
-		}
-
-		/**
-		 * WeAvatar
-		 */
-		if ( $this->setting->get_option( 'weavatar', 'wp_china_plus_setting', 'on' ) != 'off' ) {
-			add_filter( 'user_profile_picture_description', [ $this, 'set_user_profile_picture_for_weavatar' ], 1 );
-			add_filter( 'avatar_defaults', [ $this, 'set_defaults_for_weavatar' ], 1 );
-
-			add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_url' ], 1 );
-			add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_url' ], 1 );
-			add_filter( 'get_avatar_url', [ $this, 'get_weavatar_url' ], 1 );
-			add_filter( 'um_user_avatar_url_filter', [ $this, 'get_weavatar_url' ], 999999 );
-			add_filter( 'bp_gravatar_url', [ $this, 'get_weavatar_url' ], 999999 );
-			add_filter( 'get_avatar_url', [ $this, 'get_weavatar_url' ], 999999 );
-		}
-
-		/**
-		 * WeAvatar 推广与指导
-		 */
-		if ( $this->setting->get_option( 'email', 'wp_china_plus_setting', 'on' ) != 'off' ) {
-			add_filter( 'wp_mail', function ( $args ) {
-				// 将 mail_content_type 设置为 text/html，以便于在邮件中使用 HTML 标签
-				add_filter( 'wp_mail_content_type', function () {
-					return 'text/html';
-				}, 999999 );
-				$args['message'] .= PHP_EOL . '<p>本站头像由 © WeAvatar 提供，WeAvatar 致力于打造统一的互联网头像体系</p><p>想要修改您的头像？请前往 <a href="https://weavatar.com" target="_blank">https://weavatar.com</a></p>';
-
-				return $args;
-			}, 999999 );
-		}
+		$this->setting_api = new API();
+		add_action( 'admin_init', [ $this, 'admin_init' ] );
+		add_action( is_multisite() ? 'network_admin_menu' : 'admin_menu', [ $this, 'admin_menu' ] );
 	}
 
 	/**
-	 * WordPress.Org 替换函数
+	 * 挂载设置项
 	 */
-	public function filter_wordpress_org( $preempt, $args, $url ) {
-		if ( ( ! strpos( $url, 'api.wordpress.org' ) && ! strpos( $url,
-				'downloads.wordpress.org' ) ) ) {
-			return $preempt;
-		}
+	public function admin_init() {
 
-		if ( $this->setting->get_option( 'block_unnecessary', 'wp_china_plus_setting', 'off' ) != 'off' ) {
-			if ( strpos( $url, 'api.wordpress.org/core/browse-happy/' ) ) {
-				return new WP_Error( 'http_request_not_executed', '无用 URL 已屏蔽请求' );
-			}
-			if ( strpos( $url, 'api.wordpress.org/core/serve-happy/' ) ) {
-				return new WP_Error( 'http_request_not_executed', '无用 URL 已屏蔽请求' );
-			}
-		}
+		$sections = [
+			[
+				'id'    => 'wp_china_plus_setting',
+				'title' => __( '设置', 'wp-china-plus' )
+			],
+			[
+				'id'          => 'wp_china_plus_about',
+				'title'       => __( '关于', 'wp-china-plus' ),
+				'show_submit' => false
+			]
+		];
 
-		$url = str_replace( 'api.wordpress.org', 'wpa.cdn.haozi.net', $url );
-		$url = str_replace( 'downloads.wordpress.org', 'wpd.cdn.haozi.net', $url );
+		$fields = [
+			'wp_china_plus_setting' => [
+				[
+					'name'    => 'super_store',
+					'label'   => __( '市场加速', 'wp-china-plus' ),
+					'desc'    => __( '替换 WordPress 应用市场使用加速镜像，这将极大优化您的 WordPress 使用体验',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'proxy',
+					'options' => [
+						'proxy' => 'WordPress.Org 反代',
+						'super' => 'WePublish 应用市场『实验性』',
+						'off'   => '禁用'
+					]
+				],
+				[
+					'name'    => 'weavatar',
+					'label'   => __( 'WeAvatar头像', 'wp-china-plus' ),
+					'desc'    => __( '替换Gravatar头像为<a href="https://weavatar.com" target="_blank">WeAvatar</a>头像，WeAvatar致力于打造多端多元化的统一头像服务',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'on',
+					'options' => [
+						'on'  => '启用',
+						'off' => '禁用'
+					]
+				],
+				[
+					'name'    => 'remove_news',
+					'label'   => __( '移除 WordPress活动及新闻', 'wp-china-plus' ),
+					'desc'    => __( '移除管理后台仪表盘上的 WordPress活动及新闻 组件，可加快管理后台仪表盘的访问速度',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'on',
+					'options' => [
+						'on'  => '启用',
+						'off' => '禁用'
+					]
+				],
+				[
+					'name'    => 'block_unnecessary',
+					'label'   => __( '屏蔽 WordPress 无用 API 请求', 'wp-china-plus' ),
+					'desc'    => __( '屏蔽 WordPress 自带的一些无用 API 请求（浏览器检查、PHP 检查），可加快管理后台的访问速度',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'off',
+					'options' => [
+						'on'  => '启用',
+						'off' => '禁用'
+					]
+				],
+				[
+					'name'    => 'super_admin',
+					'label'   => __( '后台静态加速', 'wp-china-plus' ),
+					'desc'    => __( '替换 WordPress 所依赖的静态文件使用 WP-China-Plus 的公共节点，此选项可显著加快小带宽服务器的管理后台访问速度',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'on',
+					'options' => [
+						'on'  => '启用',
+						'off' => '禁用'
+					]
+				],
+				[
+					'name'    => 'super_gfont',
+					'label'   => __( '谷歌字体加速', 'wp-china-plus' ),
+					'desc'    => __( '替换谷歌字体文件使用 WP-China-Plus 的公共节点，建议只在包含谷歌字体的情况下才启用该选项',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'off',
+					'options' => [
+						'off'   => '禁用',
+						'front' => '前台启用',
+						'back'  => '后台启用',
+						'all'   => '全局启用'
+					]
+				],
+				[
+					'name'    => 'super_gajax',
+					'label'   => __( '谷歌前端公共库加速', 'wp-china-plus' ),
+					'desc'    => __( '替换谷歌前端公共库文件使用 WP-China-Plus 的公共节点，建议只在包含谷歌前端公共库的情况下才启用该选项',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'off',
+					'options' => [
+						'off'   => '禁用',
+						'front' => '前台启用',
+						'back'  => '后台启用',
+						'all'   => '全局启用'
+					]
+				],
+				[
+					'name'    => 'super_cdnjs',
+					'label'   => __( 'CDNJS公共库加速', 'wp-china-plus' ),
+					'desc'    => __( '替换 CDNJS 公共库文件使用 WP-China-Plus 的公共节点，建议只在包含 CDNJS 公共库的情况下才启用该选项',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'off',
+					'options' => [
+						'off'   => '禁用',
+						'front' => '前台启用',
+						'back'  => '后台启用',
+						'all'   => '全局启用'
+					]
+				],
+				[
+					'name'    => 'email',
+					'label'   => __( '推广与指导', 'wp-china-plus' ),
+					'desc'    => __( '在 WordPress 的邮件模版尾部自动插入指向 WeAvatar.com 的超链接，帮助推广 WeAvatar 并指导访客如何修改头像。WeAvatar 的发展壮大需你我共同参与，感谢参与推广的每一个人！',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'on',
+					'options' => [
+						'on'  => '启用',
+						'off' => '禁用'
+					]
+				],
+			],
+			'wp_china_plus_about'   => [
+				[
+					'name'  => 'about',
+					'label' => __( '关于', 'wp-china-plus' ),
+					'type'  => 'html',
+					'html'  => __( '<h4>GitHub：<a href="https://github.com/HaoZi-Team/WP-China-Plus" target="_blank">https://github.com/haozi-team/wp-china-plus</a></h4><p>WP-China-Plus 是 WordPress 本土化的一部分，其作用是对 WordPress 中的外部请求和静态资源进行加速，改善 WordPress 在国内的使用体验。</p><p>问题反馈请前往项目的 Issues 区｜交流QQ群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&amp;k=I1oJKSTH">12370907</a>｜QQ频道：<a target="_blank" href="https://pd.qq.com/s/fyol46wfy">耗子</a></p><br><p>维护相关API服务器和节点需要一定的成本，如果可能，不妨赞助使插件发展得更好。</p>',
+						'wp-china-plus' )
+				],
+				[
+					'name'  => 'sponsor',
+					'label' => __( '赞助商', 'wp-china-plus' ),
+					'type'  => 'html',
+					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="https://www.ddunyun.com/aff/PNYAXMKI" target="_blank">盾云</a></p><p><a href="https://www.anycast.ai/" target="_blank">AnyCast.Ai</a></p><p><a href="https://su.sctes.com/register?code=8st689ujpmm2p" target="_blank">无畏云加速</a></p><p><a href="https://www.jihulab.com/" target="_blank">极狐</a></p>',
+						'wp-china-plus' )
+				]
+			]
+		];
 
-		// curl版本低于7.15.0不支持https
-		$curl_version = '1.0.0';
-		if ( function_exists( 'curl_version' ) ) {
-			$curl_version_array = curl_version();
-			if ( is_array( $curl_version_array ) && key_exists( 'version', $curl_version_array ) ) {
-				$curl_version = $curl_version_array['version'];
-			}
-		}
-		if ( version_compare( $curl_version, '7.15.0', '<' ) ) {
-			$url = str_replace( 'https://', 'http://', $url );
-		}
-
-		return wp_remote_request( $url, $args );
+		$this->setting_api->set_sections( $sections );
+		$this->setting_api->set_fields( $fields );
+		$this->setting_api->admin_init();
 	}
 
 	/**
-	 * 头像替换函数
+	 * 挂载设置页面
 	 */
-	public function get_weavatar_url( $url ) {
-		$sources = array(
-			'www.gravatar.com',
-			'0.gravatar.com',
-			'1.gravatar.com',
-			'2.gravatar.com',
-			'secure.gravatar.com',
-			'cn.gravatar.com',
-			'gravatar.com',
-			'sdn.geekzu.org',
-			'gravatar.duoshuo.com',
-			'gravatar.loli.net',
-			'cravatar.cn',
+	public function admin_menu() {
+		// 后台设置
+		add_submenu_page(
+			is_multisite() ? 'settings.php' : 'options-general.php',
+			esc_html__( 'WP-China-Plus', 'wp-china-plus' ),
+			esc_html__( 'WP-China-Plus', 'wp-china-plus' ),
+			is_multisite() ? 'manage_network_options' : 'manage_options',
+			'wp-china-plus',
+			[ $this, 'setting_page' ]
 		);
+		// 插件页设置
+		add_filter( 'plugin_action_links', function ( $links, $file ) {
+			if ( 'wp-china-plus/wp-china-plus.php' !== $file ) {
+				return $links;
+			}
+			$settings_link = '<a href="' . add_query_arg( array( 'page' => 'wp-china-plus' ),
+					is_multisite() ? 'settings.php' : 'options-general.php' ) . '">' . esc_html__( '设置',
+					'wp-china-plus' ) . '</a>';
+			array_unshift( $links, $settings_link );
 
-		return str_replace( $sources, 'weavatar.com', $url );
+			return $links;
+		}, 10, 2 );
 	}
 
 	/**
-	 * WordPress讨论设置中的默认LOGO名称替换函数
+	 * 设置页面模版
 	 */
-	public function set_defaults_for_weavatar( $avatar_defaults ) {
-		$avatar_defaults['gravatar_default'] = 'WeAvatar 头像';
+	public function setting_page() {
+		echo '<h1>WP-China-Plus</h1>';
+		echo '<h4>我们的终极目标是打造一个本土化的 WordPress，包括应用市场、翻译、文档等方面。这需要非常大量的开发工作。</h4><h4>如果你也对此感兴趣且熟悉 WordPress 开发 / Vue 开发 / Golang 开发，欢迎通过下方关于页面的联系方式加入我们。</h4><span style="float: right; padding-right: 20px;">By: 耗子开源</span>';
+		echo '<div class="wrap">';
 
-		return $avatar_defaults;
-	}
+		$this->setting_api->show_navigation();
+		$this->setting_api->show_forms();
 
-	/**
-	 * 个人资料卡中的头像上传地址替换函数
-	 */
-	public function set_user_profile_picture_for_weavatar() {
-		return '<a href="https://weavatar.com" target="_blank">您可以在 WeAvatar 修改您的资料图片</a>';
-	}
-
-	/**
-	 * 页面替换
-	 *
-	 * @param $replace_func string 要调用的字符串关键字替换函数
-	 * @param $param array 传递给字符串替换函数的参数
-	 */
-	private function page_str_replace( $replace_func, $param, $level ) {
-		if ( $level == 'front' && is_admin() ) {
-			return;
-		} elseif ( $level == 'back' && ! is_admin() ) {
-			return;
-		}
-
-		add_action( 'init', function () use ( $replace_func, $param ) {
-			ob_start( function ( $buffer ) use ( $replace_func, $param ) {
-				$param[] = $buffer;
-
-				return call_user_func_array( $replace_func, $param );
-			} );
-		}, 999999 );
+		echo '</div>';
 	}
 }

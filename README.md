@@ -41,8 +41,10 @@
 
 ### CDN
 
-- [盾云CDN](http://cdn.ddunyun.com/)
+- [盾云CDN](https://cdn.ddunyun.com/)
 
-- [又拍云](https://www.upyun.com/)
+- [AnyCast.Ai](https://www.anycast.ai/)
+
+- [无畏云加速](https://su.sctes.com/register?code=8st689ujpmm2p)
 
 #### 接受云资源和资金赞助，可通过QQ群咨询联系
