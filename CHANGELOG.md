@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.1.2 - 2023-10-02
+
+1. 支持 WePublish 应用市场
+
 ## 2.1.1 - 2023-08-25
 
 1. 管理后台WordPress活动及新闻移除支持站群网络
