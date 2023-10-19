@@ -157,6 +157,9 @@ class Super {
 			$url = str_replace( 'wpa.cdn.haozi.net/themes/info/1.2', 'wepublish.cn/api/wp-json/theme/v1/info', $url );
 		}
 
+		// URL 末尾添加时间戳参数
+		$url = add_query_arg( 't', time(), $url );
+
 		// curl版本低于7.15.0不支持https
 		$curl_version = '1.0.0';
 		if ( function_exists( 'curl_version' ) ) {
