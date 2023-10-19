@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.1.3 - 2023-10-19
+
+- 增加时间戳验证，用于防盗链
+
 ## 2.1.2 - 2023-10-02
 
 1. 支持 WePublish 应用市场
