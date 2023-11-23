@@ -54,8 +54,8 @@ class Setting {
 				],
 				[
 					'name'    => 'weavatar',
-					'label'   => __( 'WeAvatar头像', 'wp-china-plus' ),
-					'desc'    => __( '替换Gravatar头像为<a href="https://weavatar.com" target="_blank">WeAvatar</a>头像，WeAvatar致力于打造多端多元化的统一头像服务',
+					'label'   => __( 'WeAvatar 头像', 'wp-china-plus' ),
+					'desc'    => __( '替换 Gravatar 头像为 <a href="https://weavatar.com" target="_blank">WeAvatar</a> 头像，WeAvatar 致力于打造多端多元化的统一头像服务',
 						'wp-china-plus' ),
 					'type'    => 'radio',
 					'default' => 'on',
@@ -66,8 +66,8 @@ class Setting {
 				],
 				[
 					'name'    => 'remove_news',
-					'label'   => __( '移除 WordPress活动及新闻', 'wp-china-plus' ),
-					'desc'    => __( '移除管理后台仪表盘上的 WordPress活动及新闻 组件，可加快管理后台仪表盘的访问速度',
+					'label'   => __( '移除「WordPress活动及新闻」', 'wp-china-plus' ),
+					'desc'    => __( '移除管理后台仪表盘上的「WordPress活动及新闻」组件，可加快管理后台仪表盘的访问速度',
 						'wp-china-plus' ),
 					'type'    => 'radio',
 					'default' => 'on',
@@ -78,7 +78,7 @@ class Setting {
 				],
 				[
 					'name'    => 'block_unnecessary',
-					'label'   => __( '屏蔽 WordPress 无用 API 请求', 'wp-china-plus' ),
+					'label'   => __( '屏蔽无用 API 请求', 'wp-china-plus' ),
 					'desc'    => __( '屏蔽 WordPress 自带的一些无用 API 请求（浏览器检查、PHP 检查），可加快管理后台的访问速度',
 						'wp-china-plus' ),
 					'type'    => 'radio',
@@ -130,7 +130,7 @@ class Setting {
 				],
 				[
 					'name'    => 'super_cdnjs',
-					'label'   => __( 'CDNJS公共库加速', 'wp-china-plus' ),
+					'label'   => __( 'CDNJS 公共库加速', 'wp-china-plus' ),
 					'desc'    => __( '替换 CDNJS 公共库文件使用 WP-China-Plus 的公共节点，建议只在包含 CDNJS 公共库的情况下才启用该选项',
 						'wp-china-plus' ),
 					'type'    => 'radio',
@@ -160,14 +160,14 @@ class Setting {
 					'name'  => 'about',
 					'label' => __( '关于', 'wp-china-plus' ),
 					'type'  => 'html',
-					'html'  => __( '<h4>GitHub：<a href="https://github.com/HaoZi-Team/WP-China-Plus" target="_blank">https://github.com/haozi-team/wp-china-plus</a></h4><p>WP-China-Plus 是 WordPress 本土化的一部分，其作用是对 WordPress 中的外部请求和静态资源进行加速，改善 WordPress 在国内的使用体验。</p><p>问题反馈请前往项目的 Issues 区｜交流QQ群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&amp;k=I1oJKSTH">12370907</a>｜QQ频道：<a target="_blank" href="https://pd.qq.com/s/fyol46wfy">耗子</a></p><br><p>维护相关API服务器和节点需要一定的成本，如果可能，不妨赞助使插件发展得更好。</p>',
+					'html'  => __( '<h4>GitHub：<a href="https://github.com/HaoZi-Team/WP-China-Plus" target="_blank">https://github.com/haozi-team/wp-china-plus</a></h4><p>WP-China-Plus 是 WordPress 本土化的一部分，其作用是对 WordPress 中的外部请求和静态资源进行加速，改善 WordPress 在国内的使用体验。</p><p>问题反馈请前往项目的 Issues 区｜交流 QQ 群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&amp;k=I1oJKSTH">12370907</a>｜QQ 频道：<a target="_blank" href="https://pd.qq.com/s/fyol46wfy">耗子</a></p><br><p>维护相关 API 服务器和节点需要一定的成本，如果可能，不妨赞助使插件发展得更好。</p>',
 						'wp-china-plus' )
 				],
 				[
 					'name'  => 'sponsor',
 					'label' => __( '赞助商', 'wp-china-plus' ),
 					'type'  => 'html',
-					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="https://www.ddunyun.com/aff/PNYAXMKI" target="_blank">盾云</a></p><p><a href="https://www.anycast.ai/" target="_blank">AnyCast.Ai</a></p><p><a href="https://su.sctes.com/register?code=8st689ujpmm2p" target="_blank">无畏云加速</a></p><p><a href="https://www.jihulab.com/" target="_blank">极狐</a></p>',
+					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="https://su.sctes.com/register?code=8st689ujpmm2p" target="_blank">无畏云加速</a></p><p><a href="https://www.ddunyun.com/aff/PNYAXMKI" target="_blank">盾云</a></p><p><a href="https://www.anycast.ai/" target="_blank">AnyCast.Ai</a></p><p><a href="https://www.jihulab.com/" target="_blank">极狐</a></p>',
 						'wp-china-plus' )
 				]
 			]
@@ -210,7 +210,7 @@ class Setting {
 	 */
 	public function setting_page() {
 		echo '<h1>WP-China-Plus</h1>';
-		echo '<h4>我们的终极目标是打造一个本土化的 WordPress，包括应用市场、翻译、文档等方面。这需要非常大量的开发工作。</h4><h4>如果你也对此感兴趣且熟悉 WordPress 开发 / Vue 开发 / Golang 开发，欢迎通过下方关于页面的联系方式加入我们。</h4><span style="float: right; padding-right: 20px;">By: 耗子开源</span>';
+		echo '<h4>我们的终极目标是打造一个本土化的 WordPress，包括应用市场、翻译、文档等方面。这需要非常大量的开发工作。</h4><h4>如果你也对此感兴趣且熟悉 WordPress / Vue / Golang 开发，欢迎通过下方关于页面的联系方式加入我们。</h4><span style="float: right; padding-right: 20px;">By: 耗子开源</span>';
 		echo '<div class="wrap">';
 
 		$this->setting_api->show_navigation();

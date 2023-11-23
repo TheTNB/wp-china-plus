@@ -20,7 +20,7 @@ class Super {
 		$this->setting = new API();
 
 		/**
-		 * WordPress.Org API替换
+		 * WordPress.Org API 替换
 		 */
 		if ( is_admin() || wp_doing_cron() ) {
 			if ( $this->setting->get_option( 'super_store', 'wp_china_plus_setting', 'proxy' ) != 'off' ) {
@@ -29,7 +29,7 @@ class Super {
 		}
 
 		/**
-		 * 移除 WordPress活动及新闻 小组件
+		 * 移除「WordPress活动及新闻」小组件
 		 */
 		if ( is_admin() && $this->setting->get_option( 'remove_news', 'wp_china_plus_setting', 'on' ) != 'off' ) {
 			add_action( 'wp_dashboard_setup', function () {
@@ -129,7 +129,7 @@ class Super {
 	}
 
 	/**
-	 * WordPress.Org 替换函数
+	 * WordPress.Org 替换
 	 */
 	public function filter_wordpress_org( $preempt, $args, $url ) {
 		if ( ( ! strpos( $url, 'api.wordpress.org' ) && ! strpos( $url,
@@ -157,26 +157,11 @@ class Super {
 			$url = str_replace( 'wpa.cdn.haozi.net/themes/info/1.2', 'wepublish.cn/api/wp-json/theme/v1/info', $url );
 		}
 
-		// URL 末尾添加时间戳参数
-		$url = add_query_arg( 't', time(), $url );
-
-		// curl版本低于7.15.0不支持https
-		$curl_version = '1.0.0';
-		if ( function_exists( 'curl_version' ) ) {
-			$curl_version_array = curl_version();
-			if ( is_array( $curl_version_array ) && key_exists( 'version', $curl_version_array ) ) {
-				$curl_version = $curl_version_array['version'];
-			}
-		}
-		if ( version_compare( $curl_version, '7.15.0', '<' ) ) {
-			$url = str_replace( 'https://', 'http://', $url );
-		}
-
 		return wp_remote_request( $url, $args );
 	}
 
 	/**
-	 * 头像替换函数
+	 * 头像替换
 	 */
 	public function get_weavatar_url( $url ) {
 		$sources = array(
@@ -197,7 +182,7 @@ class Super {
 	}
 
 	/**
-	 * WordPress讨论设置中的默认LOGO名称替换函数
+	 * WordPress 讨论设置中的默认 LOGO 名称替换
 	 */
 	public function set_defaults_for_weavatar( $avatar_defaults ) {
 		$avatar_defaults['gravatar_default'] = 'WeAvatar 头像';
@@ -206,7 +191,7 @@ class Super {
 	}
 
 	/**
-	 * 个人资料卡中的头像上传地址替换函数
+	 * 个人资料卡中的头像上传地址替换
 	 */
 	public function set_user_profile_picture_for_weavatar() {
 		return '<a href="https://weavatar.com" target="_blank">您可以在 WeAvatar 修改您的资料图片</a>';
