@@ -14,6 +14,7 @@
 
 - [x] 优化 WordPress 相关服务在中国大陆的访问速度
 - [x] 优化 WordPress 后台加载速度
+- [x] 优化 WordPress 前台加载速度
 - [x] 移除后台无用请求与组件
 - [x] 替换 Gravatar 头像为 WeAvatar 头像
 - [x] 优化 谷歌字体 加载速度
