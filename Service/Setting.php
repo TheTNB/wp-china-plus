@@ -91,10 +91,22 @@ class Setting {
 				[
 					'name'    => 'super_admin',
 					'label'   => __( '后台静态加速', 'wp-china-plus' ),
-					'desc'    => __( '替换 WordPress 所依赖的静态文件使用 WP-China-Plus 的公共节点，此选项可显著加快小带宽服务器的管理后台访问速度',
+					'desc'    => __( '替换 WordPress 所依赖的静态文件使用 WP-China-Plus 的公共节点，可显著加快小带宽/海外服务器的管理后台访问速度',
 						'wp-china-plus' ),
 					'type'    => 'radio',
 					'default' => 'on',
+					'options' => [
+						'on'  => '启用',
+						'off' => '禁用'
+					]
+				],
+				[
+					'name'    => 'super_frontend',
+					'label'   => __( '前台静态加速', 'wp-china-plus' ),
+					'desc'    => __( '替换主题所依赖的静态文件使用 WP-China-Plus 的公共节点，可显著加快小带宽/海外服务器的前台访问速度（节点缓存 14 天、内网勿开）',
+						'wp-china-plus' ),
+					'type'    => 'radio',
+					'default' => 'off',
 					'options' => [
 						'on'  => '启用',
 						'off' => '禁用'

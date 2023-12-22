@@ -67,6 +67,20 @@ class Super {
 
 		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 			/**
+			 * 前台静态加速
+			 */
+			if ( $this->setting->get_option( 'super_frontend', 'wp_china_plus_setting', 'off' ) != 'off' ) {
+				add_action( 'template_redirect', function () {
+					ob_start( function ( $content ) {
+						$regex = '#(?<=[(\"\'])(?:' . quotemeta( home_url() ) . ')?/(?:((?:wp-content|wp-includes)[^\"\')]+\.(css|js)[^\"\')]+))(?=[\"\')])#';
+						return preg_replace_callback( $regex, function ( &$asset ) {
+							return 'https://public.cdn.haozi.net/' . $asset[0];
+						}, $content );
+					} );
+				} );
+			}
+
+			/**
 			 * 谷歌字体替换
 			 */
 			if ( $this->setting->get_option( 'super_gfont', 'wp_china_plus_setting', 'off' ) != 'off' ) {
