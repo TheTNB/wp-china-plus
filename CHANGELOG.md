@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.1.4 - 2023-12-02
+
+- 优化文案排版
+
 ## 2.1.3 - 2023-10-19
 
 - 增加时间戳验证，用于防盗链
