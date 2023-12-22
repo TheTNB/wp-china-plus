@@ -2,6 +2,10 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.1.5 - 2023-12-22
+
+1. 新增前台静态加速
+
 ## 2.1.4 - 2023-12-02
 
 - 优化文案排版
