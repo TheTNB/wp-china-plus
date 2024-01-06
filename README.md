@@ -45,12 +45,10 @@
 
 - [无畏云加速](https://su.sctes.com/register?code=8st689ujpmm2p)
 
-- [盾云CDN](https://cdn.ddunyun.com/)
+- [盾云 CDN](https://cdn.ddunyun.com/)
 
 - [AnyCast.Ai](https://www.anycast.ai/)
 
-### DevOps
-
-- [极狐 GitLab](https://www.jihulab.com/)
+- [蓝易云 CDN](https://tsycdn.com/)
 
 #### 接受云资源和资金赞助，可通过QQ群咨询联系
