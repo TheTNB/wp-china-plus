@@ -179,7 +179,7 @@ class Setting {
 					'name'  => 'sponsor',
 					'label' => __( '赞助商', 'wp-china-plus' ),
 					'type'  => 'html',
-					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="https://su.sctes.com/register?code=8st689ujpmm2p" target="_blank">无畏云加速</a></p><p><a href="https://www.ddunyun.com/aff/PNYAXMKI" target="_blank">盾云</a></p><p><a href="https://www.anycast.ai/" target="_blank">AnyCast.Ai</a></p><p><a href="https://www.jihulab.com/" target="_blank">极狐</a></p>',
+					'html'  => __( '<h4>感谢以下赞助商的支持：</h4><p><a href="https://su.sctes.com/register?code=8st689ujpmm2p" target="_blank">无畏云加速</a></p><p><a href="https://www.ddunyun.com/aff/PNYAXMKI" target="_blank">盾云</a></p><p><a href="https://www.anycast.ai/" target="_blank">AnyCast.Ai</a></p><p><a href="https://tsycdn.com/" target="_blank">蓝易云 CDN</a></p>',
 						'wp-china-plus' )
 				]
 			]
