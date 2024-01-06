@@ -73,7 +73,8 @@ class Super {
 				add_action( 'template_redirect', function () {
 					ob_start( function ( $content ) {
 						$regex = '#(?<=[(\"\'])(?:' . quotemeta( home_url() ) . ')?/(?:((?:wp-content|wp-includes)[^\"\')]+\.(css|js)[^\"\')]+))(?=[\"\')])#';
-						return preg_replace_callback( $regex, function ( &$asset ) {
+
+						return preg_replace_callback( $regex, function ( $asset ) {
 							return 'https://public.cdn.haozi.net/' . $asset[0];
 						}, $content );
 					} );
