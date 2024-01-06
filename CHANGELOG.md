@@ -2,6 +2,11 @@
 
 All notable changes to `WP-China-Plus` will be documented in this file.
 
+## 2.1.6 - 2024-01-06
+
+1. 修复上个版本引入的一个 PHP 警告信息
+2. 调整赞助商信息
+
 ## 2.1.5 - 2023-12-22
 
 1. 新增前台静态加速
