@@ -1,54 +1,27 @@
-# WP-China-Plus
+# WP-China-Plus 停服通知
 
-一个轻量级插件，用于改善 WordPress 在中国大陆的使用体验。
+随着 WP-China-Yes 插件新版本如期发布，WP-China-Plus 插件的任务将宣告结束，存量 WP-China-Plus 用户请尽快迁移至 WP-China-Yes > 3.6.0 版本。 
 
-## 简介
+下载直链：[https://dl1.weixiaoduo.com/2024/03/wp-china-yes-3.6.0.zip](https://dl1.weixiaoduo.com/2024/03/wp-china-yes-3.6.0.zip)
 
-我们的终极目标是打造一个本土化的 WordPress，包括应用市场、翻译、文档等方面。这需要非常大量的开发工作。
+## WP-China-Plus 停服计划
 
-平台当前正在积极开发中，已有成果可在 [WePublish.cn](https://wepublish.cn/) 了解。
+- 2024年3月8日：发布公告，归档存储库，删除下载链接。
+- 2024年4月1日：重定向 WP-China-Plus、WePublish 的服务域名至 WP-China-Yes。
+- 2024年12月31日：删除部分域名解析记录，至此彻底停服。
 
-如果你也对此感兴趣且熟悉 WordPress / Vue / Golang / PHP 开发，欢迎通过下方的联系方式加入我们。
+WP-China-Yes 新版本由我负责主导开发，文派开源提供硬件和资金支持，稳定性可放心。
 
-## 功能
+WP-China-Yes 已集成 WeAvatar，初认头像选择备用源即可使用。
 
-- [x] 优化 WordPress 相关服务在中国大陆的访问速度
-- [x] 优化 WordPress 后台加载速度
-- [x] 优化 WordPress 前台加载速度
-- [x] 移除后台无用请求与组件
-- [x] 替换 Gravatar 头像为 WeAvatar 头像
-- [x] 优化 谷歌字体 加载速度
-- [x] 优化 谷歌前端库 加载速度
-- [x] 优化 CDNJS 加载速度
+## WePublish 平台的平替
 
-## 安装
+翻译平台：https://wepublish.cn/translate => https://translate.wenpai.org
 
-同其他 WordPress 插件一样，**从 Release 页面下载最新版本的插件**（不要直接下载源码！！！），在后台插件管理页面上传并启用即可。
+社区论坛：https://wepublish.cn/forums => https://wenpai.org/support
 
-当然，你也可以选择将插件手动上传到`wp-content/plugins`目录下，然后在后台启用。
+新闻资讯：https://wepublish.cn/news => https://wenpai.org/news
 
-## 问题反馈
+主题目录：https://wepublish.cn/store/theme/ => https://wenpai.org/themes
 
-对于 WordPress 相关的问题，可在 [WePublish社区论坛](https://wepublish.cn/forum) 提问寻求帮助。
-
-对于此插件自身问题，可在`Issues`页面提交问题反馈，注意[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)。
-
-交流QQ群：[12370907](https://jq.qq.com/?_wv=1027&k=I1oJKSTH) | QQ频道：[haoziofficial1](https://pd.qq.com/s/fyol46wfy)
-
-## 赞助商
-
-### 服务器
-
-- [盾云](https://www.ddunyun.com/)
-
-### CDN
-
-- [无畏云加速](https://su.sctes.com/register?code=8st689ujpmm2p)
-
-- [盾云 CDN](https://cdn.ddunyun.com/)
-
-- [AnyCast.Ai](https://www.anycast.ai/)
-
-- [蓝易云 CDN](https://tsycdn.com/)
-
-#### 接受云资源和资金赞助，可通过QQ群咨询联系
+插件目录：https://wepublish.cn/store/plugin/ => https://wenpai.org/plugins
